@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <meta name="referrer" content="no-referrer">
+  <title>MarketCal · 财报与宏观日历</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📅</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0807;
+      --panel: rgba(28,22,18,0.72);
+      --hover: rgba(255,255,255,0.04);
+      --line: rgba(255,255,255,0.07);
+      --line-2: rgba(255,255,255,0.13);
+      --text-1: #f2eee9;
+      --text-2: #b0a69c;
+      --text-3: #766c63;
+      --accent: #f5a524;
+      --grad: linear-gradient(120deg, #f59e0b 0%, #f97316 55%, #ef4444 100%);
+      --grid-dot: rgba(255,255,255,0.045);
+      --glow-1: rgba(245,158,11,0.14);
+      --glow-2: rgba(239,68,68,0.08);
+      --high: #ef4444;
+      --medium: #f59e0b;
+      --bmo: #38bdf8;
+      --amc: #a78bfa;
+      --watch: #f5a524;
+      --kbd-bg: rgba(255,255,255,0.06);
+    }
+    :root[data-theme="light"] {
+      --bg: #fbf9f6;
+      --panel: rgba(255,255,255,0.88);
+      --hover: rgba(40,20,0,0.035);
+      --line: rgba(40,20,0,0.08);
+      --line-2: rgba(40,20,0,0.15);
+      --text-1: #1d1712;
+      --text-2: #5f554c;
+      --text-3: #978c82;
+      --accent: #c2410c;
+      --grid-dot: rgba(40,20,0,0.06);
+      --glow-1: rgba(245,158,11,0.09);
+      --glow-2: rgba(239,68,68,0.05);
+      --high: #dc2626;
+      --medium: #d97706;
+      --bmo: #0284c7;
+      --amc: #7c3aed;
+      --watch: #c2410c;
+      --kbd-bg: rgba(40,20,0,0.05);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text-1);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      font-size: 14px; line-height: 1.55; -webkit-font-smoothing: antialiased; min-height: 100vh;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background:
+        radial-gradient(600px 400px at 15% -5%, var(--glow-1), transparent 70%),
+        radial-gradient(700px 500px at 95% 0%, var(--glow-2), transparent 70%),
+        radial-gradient(circle, var(--grid-dot) 1px, transparent 1px) 0 0 / 22px 22px;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; }
+
+    /* ── Top bar ── */
+    .topbar {
+      position: sticky; top: 0; z-index: 30;
+      background: color-mix(in srgb, var(--bg) 72%, transparent);
+      backdrop-filter: saturate(180%) blur(18px); -webkit-backdrop-filter: saturate(180%) blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner { max-width: 1400px; margin: 0 auto; padding: 0 24px; height: 60px; display: flex; align-items: center; gap: 20px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 17px; letter-spacing: -0.02em; white-space: nowrap; }
+    .logo-mark { width: 28px; height: 28px; border-radius: 8px; background: var(--grad); display: grid; place-items: center; font-size: 15px; box-shadow: 0 0 20px var(--glow-1); }
+    .logo small { font-weight: 500; font-size: 12px; color: var(--text-3); letter-spacing: 0; }
+    .search {
+      flex: 1; max-width: 520px; margin: 0 auto; display: flex; align-items: center; gap: 8px;
+      background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0 10px; height: 36px;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .search:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px var(--glow-1); }
+    .search svg { color: var(--text-3); flex: none; }
+    .search input { flex: 1; min-width: 0; background: none; border: none; outline: none; color: var(--text-1); font: inherit; font-size: 13.5px; }
+    .search input::placeholder { color: var(--text-3); }
+    kbd { font-family: inherit; font-size: 11px; color: var(--text-3); background: var(--kbd-bg); border: 1px solid var(--line); border-radius: 5px; padding: 1px 6px; }
+    .top-right { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+    .updated { font-size: 12px; color: var(--text-3); display: flex; align-items: center; gap: 6px; }
+    .live-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 3px rgba(34,197,94,0.2); animation: pulse 2s infinite; }
+    @keyframes pulse { 50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); } }
+    .icon-btn { width: 34px; height: 34px; border-radius: 9px; background: var(--panel); border: 1px solid var(--line); cursor: pointer; display: grid; place-items: center; color: var(--text-2); flex: none; }
+    .icon-btn:hover { color: var(--text-1); border-color: var(--line-2); }
+    .icon-btn:disabled { cursor: default; opacity: .6; }
+    .icon-btn.spin svg { animation: spin .8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Layout ── */
+    .layout { max-width: 1400px; margin: 0 auto; padding: 24px 24px 64px; display: grid; grid-template-columns: 200px minmax(0, 1fr) 300px; gap: 24px; align-items: start; }
+    .side { position: sticky; top: 84px; max-height: calc(100vh - 100px); overflow-y: auto; scrollbar-width: none; }
+    .side::-webkit-scrollbar { display: none; }
+    .side-title { font-size: 11.5px; color: var(--text-3); padding: 0 10px; margin: 4px 0 8px; letter-spacing: .04em; }
+    .side-group + .side-group { margin-top: 22px; }
+    .nav-item { width: 100%; display: flex; align-items: center; gap: 10px; padding: 7px 10px; border-radius: 8px; border: none; background: none; cursor: pointer; text-align: left; color: var(--text-2); font-size: 13.5px; position: relative; }
+    .nav-item:hover { background: var(--hover); color: var(--text-1); }
+    .nav-item.active { background: var(--panel); color: var(--text-1); box-shadow: inset 0 0 0 1px var(--line); }
+    .nav-item.active::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 2px; border-radius: 2px; background: var(--grad); }
+    .nav-item .count { margin-left: auto; font-size: 11.5px; color: var(--text-3); font-variant-numeric: tabular-nums; }
+
+    /* ── Main header ── */
+    .main-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+    .main-head h1 { font-size: 24px; font-weight: 800; letter-spacing: -0.02em; }
+    .main-head h1 span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .main-head p { font-size: 12.5px; color: var(--text-3); margin-top: 4px; }
+    .tabs { display: flex; gap: 2px; padding: 3px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; }
+    .tab { display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 7px; border: none; background: none; cursor: pointer; font-size: 13px; color: var(--text-3); white-space: nowrap; }
+    .tab:hover { color: var(--text-1); }
+    .tab.active { background: var(--hover); color: var(--text-1); box-shadow: inset 0 0 0 1px var(--line-2); }
+
+    .card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+    .muted { color: var(--text-3); }
+    .warn { color: #f59e0b; }
+    .empty { text-align: center; padding: 60px 0; color: var(--text-3); }
+    .loading { padding: 80px 0; text-align: center; color: var(--text-3); }
+    .note { font-size: 12px; color: var(--text-3); margin-top: 12px; }
+    .section-title { font-size: 13px; color: var(--text-3); margin: 24px 0 10px; display: flex; align-items: center; gap: 8px; }
+    .section-title:first-child { margin-top: 0; }
+    .section-title b { color: var(--text-1); font-size: 14.5px; }
+
+    /* ── Badges ── */
+    .imp { width: 8px; height: 8px; border-radius: 50%; flex: none; display: inline-block; }
+    .imp.High { background: var(--high); box-shadow: 0 0 0 3px color-mix(in srgb, var(--high) 25%, transparent); }
+    .imp.Medium { background: var(--medium); }
+    .tm { font-size: 11px; font-weight: 600; line-height: 18px; padding: 0 6px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
+    .tm.bmo { color: var(--bmo); } .tm.amc { color: var(--amc); } .tm.tbd { color: var(--text-3); }
+    .tag { font-size: 10.5px; font-weight: 700; line-height: 16px; padding: 0 5px; border-radius: 4px; color: #fff; background: var(--watch); white-space: nowrap; }
+    .kind { font-size: 11px; line-height: 18px; padding: 0 6px; border-radius: 5px; background: var(--hover); color: var(--text-2); white-space: nowrap; }
+
+    /* ── Hero ── */
+    .hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 18px; }
+    .count-card { padding: 18px 20px; position: relative; overflow: hidden; }
+    .count-card::after { content: ''; position: absolute; inset: 0; background: var(--grad); opacity: .07; pointer-events: none; }
+    .count-card .lbl { font-size: 12px; color: var(--text-3); }
+    .count-card .ttl { font-size: 15.5px; font-weight: 700; margin: 4px 0 8px; overflow-wrap: anywhere; }
+    .count-card .big { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+    .count-card .big span { font-size: 14px; font-weight: 600; color: var(--text-2); margin-left: 2px; }
+    .count-card .sub { font-size: 12px; color: var(--text-3); margin-top: 2px; }
+
+    /* ── Week grid ── */
+    .week { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+    .day { padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+    .day.today { border-color: color-mix(in srgb, var(--accent) 60%, transparent); }
+    .day-head { display: flex; align-items: baseline; gap: 8px; }
+    .day-head b { font-size: 15px; }
+    .day-head small { font-size: 12px; color: var(--text-3); }
+    .day-head .pill { margin-left: auto; font-size: 11px; color: var(--accent); font-weight: 700; }
+    .ev { display: flex; gap: 8px; align-items: baseline; font-size: 12.5px; min-width: 0; }
+    .ev .t { font-size: 11.5px; color: var(--text-3); font-variant-numeric: tabular-nums; flex: none; }
+    .ev .n { min-width: 0; overflow-wrap: anywhere; }
+    .er-line { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; font-size: 12px; }
+    .sym { font-weight: 700; font-size: 12px; padding: 1px 6px; border-radius: 6px; background: var(--hover); border: 1px solid var(--line); white-space: nowrap; }
+    .sym.w { border-color: color-mix(in srgb, var(--watch) 60%, transparent); color: var(--watch); }
+    .more { font-size: 11.5px; color: var(--text-3); }
+    .day-empty { font-size: 12px; color: var(--text-3); }
+
+    /* ── Earnings table ── */
+    .er-day + .er-day { margin-top: 14px; }
+    .er-day-head { display: flex; align-items: baseline; gap: 10px; padding: 12px 16px 8px; }
+    .er-day-head b { font-size: 15px; }
+    .er-day-head small { font-size: 12px; color: var(--text-3); }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; white-space: nowrap; }
+    th { text-align: left; font-weight: 600; font-size: 11.5px; color: var(--text-3); padding: 6px 14px; border-bottom: 1px solid var(--line); }
+    td { padding: 8px 14px; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+    tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: var(--hover); }
+    tr.w td { background: color-mix(in srgb, var(--watch) 8%, transparent); }
+    td.nm { max-width: 260px; overflow: hidden; text-overflow: ellipsis; }
+    .num { text-align: right; }
+    .show-all { display: block; margin: 0 16px 12px; padding: 6px; width: calc(100% - 32px); border-radius: 8px; border: 1px dashed var(--line-2); background: none; color: var(--text-3); cursor: pointer; font-size: 12.5px; }
+    .show-all:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ── Macro list ── */
+    .mc { display: flex; gap: 14px; align-items: center; padding: 12px 16px; }
+    .mc + .mc { border-top: 1px solid var(--line); }
+    .mc.past { opacity: .5; }
+    .mc .when { width: 110px; flex: none; }
+    .mc .when b { display: block; font-size: 13.5px; }
+    .mc .when small { font-size: 11.5px; color: var(--text-3); }
+    .mc .body { flex: 1; min-width: 0; }
+    .mc .body b { font-size: 14px; overflow-wrap: anywhere; }
+    .mc .body small { display: block; font-size: 11.5px; color: var(--text-3); overflow-wrap: anywhere; }
+    .mc .vals { font-size: 12px; color: var(--text-2); white-space: nowrap; text-align: right; }
+    .mc .cd { width: 64px; flex: none; text-align: right; font-size: 12px; color: var(--accent); font-weight: 600; }
+
+    /* ── Right widgets ── */
+    .widget { padding: 14px 16px 12px; }
+    .widget + .widget { margin-top: 16px; }
+    .widget-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .widget-head b { font-size: 14px; }
+    .widget-head small { font-size: 11.5px; color: var(--text-3); }
+    .w-row { display: flex; gap: 8px; padding: 5px 0; font-size: 13px; align-items: center; }
+    .w-row .nm { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .w-row small { color: var(--text-3); font-size: 11px; white-space: nowrap; }
+    .status-row { display: flex; align-items: center; gap: 8px; font-size: 12.5px; padding: 4px 0; color: var(--text-2); }
+    .status-row .t { margin-left: auto; color: var(--text-3); font-size: 11.5px; white-space: nowrap; }
+    .ok { color: #22c55e; } .bad { color: #ef4444; }
+
+    /* ── Responsive ── */
+    @media (max-width: 1180px) {
+      .layout { grid-template-columns: 180px minmax(0, 1fr); }
+      .right { display: none; }
+    }
+    @media (max-width: 760px) {
+      .topbar-inner { padding: 0 14px; gap: 10px; }
+      .logo small, .updated span, kbd { display: none; }
+      .search { min-width: 0; }
+      .layout { grid-template-columns: minmax(0, 1fr); padding: 14px 14px 48px; gap: 14px; }
+      .side { position: static; max-height: none; overflow: visible; min-width: 0; }
+      .side-group + .side-group { margin-top: 10px; }
+      .side-title { display: none; }
+      .nav-list { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+      .nav-list::-webkit-scrollbar { display: none; }
+      .nav-item { width: auto; flex: none; white-space: nowrap; border: 1px solid var(--line); padding: 5px 10px; }
+      .nav-item.active::before { display: none; }
+      .nav-item .count { display: none; }
+      .tabs { width: 100%; overflow-x: auto; scrollbar-width: none; }
+      .tabs::-webkit-scrollbar { display: none; }
+      .tab { padding: 6px 10px; }
+      .week { grid-template-columns: minmax(0, 1fr); }
+      .mc { flex-wrap: wrap; gap: 6px 12px; }
+      .mc .when { width: auto; }
+      .mc .body { flex-basis: 100%; order: 3; }
+      .mc .vals { order: 4; text-align: left; }
+      .mc .cd { margin-left: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="logo" href="#"><span class="logo-mark">📅</span>MarketCal <small>财报与宏观日历</small></a>
+      <label class="search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" placeholder="搜索代码、公司、事件…" autocomplete="off">
+        <kbd id="kbd">⌘K</kbd>
+      </label>
+      <div class="top-right">
+        <div class="updated"><i class="live-dot"></i><span id="updated">加载中…</span></div>
+        <button class="icon-btn" id="reload" title="重新加载数据" aria-label="重新加载数据">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+        </button>
+        <a class="icon-btn" href="https://github.com/climb0516/earnings-calendar/actions/workflows/scrape.yml" target="_blank" rel="noopener noreferrer" title="立即抓取（跳转 GitHub Actions）" aria-label="立即抓取（跳转 GitHub Actions）">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
+        </a>
+        <button class="icon-btn" id="theme" title="切换主题" aria-label="切换主题">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="side">
+      <div class="side-group">
+        <div class="side-title">财报 · 市值门槛</div>
+        <div class="nav-list" id="caps"></div>
+      </div>
+      <div class="side-group">
+        <div class="side-title">宏观 · 地区</div>
+        <div class="nav-list" id="countries"></div>
+      </div>
+    </aside>
+
+    <main>
+      <div class="main-head">
+        <div>
+          <h1><span>财报</span>与宏观日历</h1>
+          <p id="subtitle">—</p>
+        </div>
+        <div class="tabs" id="tabs">
+          <button class="tab" data-view="week">本周概览</button>
+          <button class="tab" data-view="earnings">财报日历</button>
+          <button class="tab" data-view="macro">宏观日历</button>
+        </div>
+      </div>
+      <div id="content"><div class="loading">正在加载…</div></div>
+    </main>
+
+    <aside class="side right">
+      <div class="card widget">
+        <div class="widget-head"><b>⭐ 关注公司财报</b><small>美东日期</small></div>
+        <div id="w-watch"></div>
+      </div>
+      <div class="card widget">
+        <div class="widget-head"><b>🏛️ FOMC 议息</b><small>北京时间</small></div>
+        <div id="w-fomc"></div>
+      </div>
+      <div class="card widget">
+        <div class="widget-head"><b>📡 来源状态</b><small id="w-ok"></small></div>
+        <div id="w-status"></div>
+      </div>
+    </aside>
+  </div>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const store = {
+  get: (k, d) => { try { return JSON.parse(localStorage.getItem('mc.' + k)) ?? d; } catch { return d; } },
+  set: (k, v) => { try { localStorage.setItem('mc.' + k, JSON.stringify(v)); } catch {} },
+};
+
+const DAY = 86400000;
+const VIEWS = ['week', 'earnings', 'macro'];
+const CAPS = [
+  { id: 'watch', name: '只看关注', test: r => !!r.watch },
+  { id: 1e11,    name: '≥ 1000 亿美元', test: r => r.watch || r.mcap >= 1e11 },
+  { id: 1e10,    name: '≥ 100 亿美元', test: r => r.watch || r.mcap >= 1e10 },
+  { id: 1e9,     name: '≥ 10 亿美元', test: r => true },
+];
+const COUNTRIES = [{ id: 'USD', name: '美国' }, { id: 'all', name: '全球' }];
+const COUNTRY_ZH = { USD: '美国', CNY: '中国', EUR: '欧元区', GBP: '英国', JPY: '日本', CAD: '加拿大', AUD: '澳大利亚', NZD: '新西兰', CHF: '瑞士', All: '全球' };
+const KIND_NAME = { fomc: '美联储', bea: 'BEA', week: '周历' };
+const TIME_NAME = { bmo: '盘前', amc: '盘后', tbd: '时间未定' };
+const WEEKDAY = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+const DAY_TOP = 12;     // 本周概览每天最多列出的财报数
+
+const state = {
+  data: null,
+  view: VIEWS.includes(location.hash.slice(1)) ? location.hash.slice(1) : store.get('view', 'week'),
+  cap: store.get('cap', 1e10),
+  country: store.get('country', 'USD'),
+  q: '',
+  expanded: new Set(),
+  showPast: false,
+};
+
+// ── 主题 ──
+const applyTheme = t => document.documentElement.dataset.theme = t;
+applyTheme(store.get('theme', 'dark'));
+$('#theme').onclick = () => {
+  const t = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+  applyTheme(t); store.set('theme', t);
+};
+
+// ── 日期工具：财报和宏观的 date 都是美东日期（YYYY-MM-DD），time 是带时区的 ISO ──
+const ymd = s => { const [y, m, d] = s.split('-').map(Number); return new Date(Date.UTC(y, m - 1, d)); };
+const addDays = (s, n) => new Date(ymd(s).getTime() + n * DAY).toISOString().slice(0, 10);
+const md = s => `${+s.slice(5, 7)}/${+s.slice(8, 10)}`;
+const wd = s => WEEKDAY[ymd(s).getUTCDay()];
+const dayDiff = s => Math.round((ymd(s) - ymd(state.data.today_et)) / DAY);
+const bj = iso => {
+  const d = new Date(iso);
+  const p = new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Shanghai', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(d);
+  const g = t => (p.find(x => x.type === t) || {}).value;
+  return { date: `${g('month')}/${g('day')}`, time: `${g('hour')}:${g('minute')}` };
+};
+
+function countdown(iso) {
+  const ms = new Date(iso) - Date.now();
+  if (ms <= 0) return { n: '已发布', u: '' };
+  const h = ms / 3600000;
+  if (h < 1) return { n: Math.max(1, Math.round(ms / 60000)), u: '分钟' };
+  if (h < 48) return { n: Math.round(h), u: '小时' };
+  return { n: Math.floor(h / 24), u: '天' };
+}
+function relDay(s) {
+  const n = dayDiff(s);
+  if (n === 0) return '今天';
+  if (n === 1) return '明天';
+  if (n === -1) return '昨天';
+  return n > 0 ? `${n} 天后` : `${-n} 天前`;
+}
+function fmtCap(v) {
+  if (!v) return '—';
+  if (v >= 1e12) return '$' + (v / 1e12).toFixed(2) + 'T';
+  if (v >= 1e9) return '$' + (v / 1e9).toFixed(1) + 'B';
+  return '$' + (v / 1e6).toFixed(0) + 'M';
+}
+
+function matchQ(...texts) {
+  if (!state.q) return true;
+  const q = state.q.toLowerCase();
+  return texts.some(t => (t || '').toLowerCase().includes(q));
+}
+const capTest = () => (CAPS.find(c => c.id === state.cap) || CAPS[2]).test;
+const earnFiltered = () => state.data.earnings.filter(r => capTest()(r) && matchQ(r.symbol, r.name, r.watch));
+const macroFiltered = () => state.data.macro.filter(e => (state.country === 'all' || e.country === state.country) && matchQ(e.title, e.title_en, COUNTRY_ZH[e.country]));
+const symTag = r => `<span class="sym ${r.watch ? 'w' : ''}" title="${esc(r.name)}">${esc(r.symbol)}</span>`;
+const tmTag = t => `<span class="tm ${t}">${TIME_NAME[t] || t}</span>`;
+
+// ── 左侧导航 ──
+function renderNav() {
+  const all = state.data.earnings.filter(r => dayDiff(r.date) >= 0);
+  $('#caps').innerHTML = CAPS.map(c => `
+    <button class="nav-item ${state.cap === c.id ? 'active' : ''}" data-cap="${c.id}">${c.name}
+      <span class="count">${all.filter(c.test).length}</span></button>`).join('');
+  const future = state.data.macro.filter(e => dayDiff(e.date) >= 0);
+  $('#countries').innerHTML = COUNTRIES.map(c => `
+    <button class="nav-item ${state.country === c.id ? 'active' : ''}" data-country="${c.id}">${c.name}
+      <span class="count">${future.filter(e => c.id === 'all' || e.country === c.id).length}</span></button>`).join('');
+}
+
+// ── 视图：本周概览 ──
+function nextEvent(list) { return list.find(e => new Date(e.time) > Date.now()); }
+
+function renderWeek() {
+  const today = state.data.today_et;
+  const macro = macroFiltered();
+  const earn = earnFiltered();
+  const nextHigh = nextEvent(macro.filter(e => e.impact === 'High'));
+  const nextFomc = nextEvent(state.data.macro.filter(e => e.kind === 'fomc'));
+  const nextWatch = earn.find(r => r.watch && dayDiff(r.date) >= 0);
+  const card = (lbl, ttl, cd, sub) => `<div class="card count-card"><div class="lbl">${lbl}</div><div class="ttl">${ttl}</div>
+      <div class="big">${cd.n}<span>${cd.u}</span></div><div class="sub">${sub}</div></div>`;
+  const hero = [
+    nextHigh && card('下一个高影响事件', esc(nextHigh.title), countdown(nextHigh.time), `北京时间 ${bj(nextHigh.time).date} ${bj(nextHigh.time).time} · ${esc(COUNTRY_ZH[nextHigh.country])}`),
+    nextFomc && nextFomc !== nextHigh && card('下次 FOMC 利率决议', esc(nextFomc.title), countdown(nextFomc.time), `北京时间 ${bj(nextFomc.time).date} ${bj(nextFomc.time).time}`),
+    nextWatch && card('下一家关注公司财报', `${esc(nextWatch.symbol)} · ${esc(nextWatch.name)}`,
+      { n: Math.max(dayDiff(nextWatch.date), 0) || '今天', u: dayDiff(nextWatch.date) > 0 ? '天' : '' },
+      `美东 ${md(nextWatch.date)} ${wd(nextWatch.date)} · ${TIME_NAME[nextWatch.time]}`),
+  ].filter(Boolean).join('');
+
+  const days = Array.from({ length: 7 }, (_, i) => addDays(today, i)).filter(d => ![0, 6].includes(ymd(d).getUTCDay()) || macro.some(e => e.date === d));
+  const grid = days.map(d => {
+    const evs = macro.filter(e => e.date === d);
+    const ers = earn.filter(r => r.date === d);
+    const open = state.expanded.has(d);
+    const line = t => {
+      const rows = ers.filter(r => r.time === t || (t === 'tbd' && !['bmo', 'amc'].includes(r.time)));
+      if (!rows.length) return '';
+      const shown = open ? rows : rows.slice(0, DAY_TOP);
+      return `<div class="er-line">${tmTag(t)}${shown.map(symTag).join('')}${rows.length > shown.length ? `<button class="more show-more" data-expand="${d}" style="background:none;border:none;cursor:pointer">+${rows.length - shown.length}</button>` : ''}</div>`;
+    };
+    return `<div class="card day ${d === today ? 'today' : ''}">
+      <div class="day-head"><b>${md(d)}</b><small>${wd(d)}</small>${d === today ? '<span class="pill">今天</span>' : ''}</div>
+      ${evs.map(e => `<div class="ev"><i class="imp ${e.impact}"></i><span class="t">${bj(e.time).time}</span><span class="n">${esc(e.title)}</span></div>`).join('')}
+      ${line('bmo')}${line('amc')}${line('tbd')}
+      ${!evs.length && !ers.length ? '<div class="day-empty">没有符合条件的事件</div>' : ''}
+    </div>`;
+  }).join('');
+  return `${hero ? `<div class="hero">${hero}</div>` : ''}
+    <div class="week">${grid}</div>
+    <p class="note">日期按美东时间分组；宏观事件时间为北京时间。盘前财报约在北京时间当晚开盘前发布，盘后财报约在次日清晨发布。</p>`;
+}
+
+// ── 视图：财报日历 ──
+function renderEarnings() {
+  const list = earnFiltered().filter(r => state.showPast || dayDiff(r.date) >= 0);
+  if (!list.length) return '<div class="empty">没有符合条件的财报</div>';
+  const days = {};
+  list.forEach(r => (days[r.date] ||= []).push(r));
+  const pastN = earnFiltered().filter(r => dayDiff(r.date) < 0).length;
+  return `${pastN ? `<button class="show-all" style="margin:0 0 14px;width:100%" data-past="1">${state.showPast ? '隐藏已过去的财报' : `显示已过去的 ${pastN} 条财报`}</button>` : ''}` +
+    Object.entries(days).map(([d, rows]) => {
+      rows.sort((a, b) => (!!b.watch - !!a.watch) || (b.mcap || 0) - (a.mcap || 0));
+      const open = state.expanded.has('e' + d);
+      const shown = open ? rows : rows.slice(0, 30);
+      return `<section class="card er-day">
+        <div class="er-day-head"><b>${md(d)} ${wd(d)}</b><small>${relDay(d)} · ${rows.length} 家</small></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>代码</th><th>公司</th><th>时间</th><th class="num">市值</th><th class="num">EPS 预期</th><th class="num">去年同期 EPS</th><th class="num">分析师数</th><th>财季</th></tr></thead>
+          <tbody>${shown.map(r => `<tr class="${r.watch ? 'w' : ''}">
+            <td>${symTag(r)} ${r.watch ? `<span class="tag">${esc(r.watch)}</span>` : ''}</td>
+            <td class="nm" title="${esc(r.name)}">${esc(r.name)}</td>
+            <td>${tmTag(r.time)}</td>
+            <td class="num">${fmtCap(r.mcap)}</td>
+            <td class="num">${esc(r.eps_fc || '—')}</td>
+            <td class="num">${esc(r.eps_ly || '—')}</td>
+            <td class="num">${esc(r.ests || '—')}</td>
+            <td class="muted">${esc(r.fq)}</td>
+          </tr>`).join('')}</tbody></table></div>
+        ${rows.length > shown.length ? `<button class="show-all" data-expand="e${d}">展开全部 ${rows.length} 家</button>` : ''}
+      </section>`;
+    }).join('');
+}
+
+// ── 视图：宏观日历 ──
+function renderMacro() {
+  const list = macroFiltered().filter(e => state.showPast || dayDiff(e.date) >= -1);
+  if (!list.length) return '<div class="empty">没有符合条件的事件</div>';
+  const months = {};
+  list.forEach(e => (months[e.date.slice(0, 7)] ||= []).push(e));
+  const pastN = macroFiltered().filter(e => dayDiff(e.date) < -1).length;
+  return `${pastN ? `<button class="show-all" style="margin:0 0 14px;width:100%" data-past="1">${state.showPast ? '隐藏较早的事件' : `显示较早的 ${pastN} 个事件`}</button>` : ''}` +
+    Object.entries(months).map(([m, evs]) => `
+    <div class="section-title"><b>${m.slice(0, 4)} 年 ${+m.slice(5)} 月</b>${evs.length} 个事件</div>
+    <div class="card">${evs.map(e => {
+      const t = bj(e.time), cd = countdown(e.time), past = new Date(e.time) < Date.now();
+      const vals = [e.forecast && `预期 ${esc(e.forecast)}`, e.previous && `前值 ${esc(e.previous)}`].filter(Boolean).join(' · ');
+      return `<div class="mc ${past ? 'past' : ''}">
+        <div class="when"><b>${md(e.date)} ${wd(e.date)}</b><small>北京 ${t.date} ${t.time}</small></div>
+        <i class="imp ${e.impact}" title="${e.impact === 'High' ? '高影响' : '中影响'}"></i>
+        <div class="body"><b>${esc(e.title)}</b><small>${esc(COUNTRY_ZH[e.country] || e.country)} · <span class="kind">${KIND_NAME[e.kind]}</span> ${e.title !== e.title_en ? esc(e.title_en) : ''}</small></div>
+        ${vals ? `<div class="vals">${vals}</div>` : ''}
+        <div class="cd">${past ? '<span class="muted">已发布</span>' : `${cd.n} ${cd.u}`}</div>
+      </div>`;
+    }).join('')}</div>`).join('') +
+    `<p class="note">FOMC 与 BEA 为官方全年日程；CPI、非农等其他指标来自 ForexFactory 周历，只在当周出现，之后会保留在这里。</p>`;
+}
+
+// ── 右侧挂件 ──
+function renderWidgets() {
+  const watch = state.data.earnings.filter(r => r.watch && dayDiff(r.date) >= 0);
+  $('#w-watch').innerHTML = watch.map(r => `
+    <div class="w-row">${symTag(r)}<span class="nm">${esc(r.name)}</span>${tmTag(r.time)}<small>${md(r.date)} · ${relDay(r.date)}</small></div>`).join('')
+    || '<div class="w-row"><small>未来两周没有关注公司发财报</small></div>';
+  const fomc = state.data.macro.filter(e => e.kind === 'fomc' && new Date(e.time) > Date.now()).slice(0, 4);
+  $('#w-fomc').innerHTML = fomc.map(e => {
+    const t = bj(e.time), cd = countdown(e.time);
+    return `<div class="w-row"><span class="nm">${t.date} ${t.time}${/点阵图/.test(e.title) ? ' <span class="tag">点阵图</span>' : ''}</span><small>${cd.n} ${cd.u}后</small></div>`;
+  }).join('') || '<div class="w-row"><small>暂无</small></div>';
+  const { sources } = state.data;
+  $('#w-ok').textContent = `${sources.filter(s => s.ok).length}/${sources.length} 正常`;
+  $('#w-status').innerHTML = sources.map(s => `
+    <div class="status-row" title="${esc(s.error)}">${esc(s.name)}
+      <span class="t">${s.ok ? `<span class="ok">●</span> ${s.count} 条` : `<span class="${s.updated ? 'warn' : 'bad'}">●</span> ${s.updated ? '旧数据' : '失败'}`}</span></div>`).join('');
+}
+
+// ── 渲染入口 ──
+function render() {
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.view === state.view));
+  renderNav();
+  renderWidgets();
+  $('#content').innerHTML = { week: renderWeek, earnings: renderEarnings, macro: renderMacro }[state.view]();
+  const upE = state.data.earnings.filter(r => dayDiff(r.date) >= 0 && dayDiff(r.date) < 7);
+  const upM = state.data.macro.filter(e => e.country === 'USD' && dayDiff(e.date) >= 0 && dayDiff(e.date) < 7);
+  $('#subtitle').textContent = `未来 7 天：${upE.length} 家公司发财报（${upE.filter(r => r.watch).length} 家在关注列表）· ${upM.length} 个美国宏观事件`;
+  $('#updated').textContent = `更新于 ${new Date(state.data.updated).toLocaleString('zh-CN', { month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' })}`;
+}
+
+async function load(isRefresh) {
+  const btn = $('#reload');
+  if (btn.disabled) return;
+  btn.disabled = true;
+  btn.classList.add('spin');
+  try {
+    const res = await fetch('data.json?t=' + Date.now(), { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    state.data = await res.json();
+    render();
+    btn.title = '重新加载数据';
+  } catch (e) {
+    // 刷新失败保留已有内容，只有首次加载失败才替换为报错
+    if (!isRefresh || !state.data) {
+      $('#content').innerHTML = `<div class="empty">数据加载失败：${esc(e.message)}<br><small>本地预览需通过 HTTP 服务打开（python3 -m http.server）</small></div>`;
+    }
+    btn.title = '刷新失败，请稍后重试';
+  } finally {
+    btn.disabled = false;
+    btn.classList.remove('spin');
+  }
+}
+
+// ── 事件绑定 ──
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-cap],[data-country],[data-view],[data-expand],[data-past]');
+  if (!t || !state.data) return;
+  if (t.dataset.cap) { state.cap = t.dataset.cap === 'watch' ? 'watch' : +t.dataset.cap; store.set('cap', state.cap); }
+  else if (t.dataset.country) { state.country = t.dataset.country; store.set('country', state.country); }
+  else if (t.dataset.view) { state.view = t.dataset.view; store.set('view', state.view); history.replaceState(null, '', '#' + state.view); state.showPast = false; }
+  else if (t.dataset.expand) { const k = t.dataset.expand; state.expanded.has(k) ? state.expanded.delete(k) : state.expanded.add(k); }
+  else if (t.dataset.past) { state.showPast = !state.showPast; }
+  render();
+});
+
+let timer;
+$('#q').addEventListener('input', e => {
+  clearTimeout(timer);
+  timer = setTimeout(() => { state.q = e.target.value.trim(); if (state.data) render(); }, 150);
+});
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); $('#q').focus(); }
+  if (e.key === 'Escape' && document.activeElement === $('#q')) { $('#q').value = ''; state.q = ''; if (state.data) render(); $('#q').blur(); }
+});
+if (!/Mac/.test(navigator.platform)) $('#kbd').textContent = 'Ctrl K';
+$('#reload').onclick = () => load(true);
+
+load(false);
+setInterval(() => load(true), 10 * 60 * 1000);  // 每 10 分钟自动重新读取；倒计时也随之刷新
+</script>
+</body>
+</html>
