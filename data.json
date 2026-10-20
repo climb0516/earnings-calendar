@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-20T18:16:22+08:00",
+ "updated": "2026-10-20T18:23:21+08:00",
  "today_et": "2026-10-20",
  "watchlist": {
   "AAPL": "Mag 7",
@@ -31,7 +31,7 @@
    "ok": true,
    "error": "",
    "count": 1183,
-   "updated": "2026-10-20T18:16:22+08:00"
+   "updated": "2026-10-20T18:23:21+08:00"
   },
   {
    "id": "fomc",
@@ -39,7 +39,7 @@
    "ok": true,
    "error": "",
    "count": 57,
-   "updated": "2026-10-20T18:16:22+08:00"
+   "updated": "2026-10-20T18:23:21+08:00"
   },
   {
    "id": "bea",
@@ -47,15 +47,15 @@
    "ok": true,
    "error": "",
    "count": 8,
-   "updated": "2026-10-20T18:16:22+08:00"
+   "updated": "2026-10-20T18:23:21+08:00"
   },
   {
    "id": "week",
    "name": "ForexFactory 本周事件",
-   "ok": false,
-   "error": "HTTPError: HTTP Error 429: Too Many Requests",
-   "count": 0,
-   "updated": ""
+   "ok": true,
+   "error": "",
+   "count": 20,
+   "updated": "2026-10-20T18:23:21+08:00"
   }
  ],
  "earnings": [
@@ -14257,6 +14257,222 @@
   }
  ],
  "macro": [
+  {
+   "kind": "week",
+   "country": "CAD",
+   "impact": "High",
+   "title": "CPI m/m",
+   "title_en": "CPI m/m",
+   "time": "2026-10-19T20:30+08:00",
+   "date": "2026-10-19",
+   "forecast": "0.2%",
+   "previous": "-0.1%",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "CAD",
+   "impact": "High",
+   "title": "Median CPI y/y",
+   "title_en": "Median CPI y/y",
+   "time": "2026-10-19T20:30+08:00",
+   "date": "2026-10-19",
+   "forecast": "2.0%",
+   "previous": "2.0%",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "CAD",
+   "impact": "High",
+   "title": "Trimmed CPI y/y",
+   "title_en": "Trimmed CPI y/y",
+   "time": "2026-10-19T20:30+08:00",
+   "date": "2026-10-19",
+   "forecast": "1.9%",
+   "previous": "1.9%",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "CAD",
+   "impact": "Medium",
+   "title": "Common CPI y/y",
+   "title_en": "Common CPI y/y",
+   "time": "2026-10-19T20:30+08:00",
+   "date": "2026-10-19",
+   "forecast": "2.6%",
+   "previous": "2.6%",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "GBP",
+   "impact": "Medium",
+   "title": "Average Earnings Index 3m/y",
+   "title_en": "Average Earnings Index 3m/y",
+   "time": "2026-10-20T14:00+08:00",
+   "date": "2026-10-20",
+   "forecast": "3.8%",
+   "previous": "3.9%",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "GBP",
+   "impact": "High",
+   "title": "CPI y/y",
+   "title_en": "CPI y/y",
+   "time": "2026-10-21T14:00+08:00",
+   "date": "2026-10-21",
+   "forecast": "3.4%",
+   "previous": "3.1%",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "GBP",
+   "impact": "Medium",
+   "title": "BOE Gov Bailey Speaks",
+   "title_en": "BOE Gov Bailey Speaks",
+   "time": "2026-10-21T21:00+08:00",
+   "date": "2026-10-21",
+   "forecast": "",
+   "previous": "",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "NZD",
+   "impact": "High",
+   "title": "CPI q/q",
+   "title_en": "CPI q/q",
+   "time": "2026-10-22T05:45+08:00",
+   "date": "2026-10-21",
+   "forecast": "0.8%",
+   "previous": "1.5%",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "USD",
+   "impact": "Medium",
+   "title": "初请失业金人数",
+   "title_en": "Unemployment Claims",
+   "time": "2026-10-22T20:30+08:00",
+   "date": "2026-10-22",
+   "forecast": "200K",
+   "previous": "199K",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "GBP",
+   "impact": "Medium",
+   "title": "Retail Sales m/m",
+   "title_en": "Retail Sales m/m",
+   "time": "2026-10-23T14:00+08:00",
+   "date": "2026-10-23",
+   "forecast": "-0.1%",
+   "previous": "0.5%",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "EUR",
+   "impact": "Medium",
+   "title": "French Flash Manufacturing PMI",
+   "title_en": "French Flash Manufacturing PMI",
+   "time": "2026-10-23T15:15+08:00",
+   "date": "2026-10-23",
+   "forecast": "50.5",
+   "previous": "50.3",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "EUR",
+   "impact": "Medium",
+   "title": "French Flash Services PMI",
+   "title_en": "French Flash Services PMI",
+   "time": "2026-10-23T15:15+08:00",
+   "date": "2026-10-23",
+   "forecast": "50.7",
+   "previous": "51.4",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "EUR",
+   "impact": "Medium",
+   "title": "German Flash Manufacturing PMI",
+   "title_en": "German Flash Manufacturing PMI",
+   "time": "2026-10-23T15:30+08:00",
+   "date": "2026-10-23",
+   "forecast": "53.5",
+   "previous": "53.8",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "EUR",
+   "impact": "Medium",
+   "title": "German Flash Services PMI",
+   "title_en": "German Flash Services PMI",
+   "time": "2026-10-23T15:30+08:00",
+   "date": "2026-10-23",
+   "forecast": "52.5",
+   "previous": "52.9",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "USD",
+   "impact": "Medium",
+   "title": "制造业 PMI 初值",
+   "title_en": "Flash Manufacturing PMI",
+   "time": "2026-10-23T21:45+08:00",
+   "date": "2026-10-23",
+   "forecast": "55.4",
+   "previous": "57.0",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "USD",
+   "impact": "Medium",
+   "title": "服务业 PMI 初值",
+   "title_en": "Flash Services PMI",
+   "time": "2026-10-23T21:45+08:00",
+   "date": "2026-10-23",
+   "forecast": "57.8",
+   "previous": "58.7",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "USD",
+   "impact": "Medium",
+   "title": "密歇根消费者信心终值",
+   "title_en": "Revised UoM Consumer Sentiment",
+   "time": "2026-10-23T22:00+08:00",
+   "date": "2026-10-23",
+   "forecast": "46.3",
+   "previous": "46.3",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "USD",
+   "impact": "Medium",
+   "title": "密歇根通胀预期终值",
+   "title_en": "Revised UoM Inflation Expectations",
+   "time": "2026-10-23T22:00+08:00",
+   "date": "2026-10-23",
+   "forecast": "",
+   "previous": "4.7%",
+   "url": "https://www.forexfactory.com/calendar"
+  },
   {
    "kind": "fomc",
    "country": "USD",
