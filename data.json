@@ -1,6 +1,6 @@
 {
- "updated": "2026-11-01T09:57:15+08:00",
- "today_et": "2026-10-31",
+ "updated": "2026-11-02T10:10:15+08:00",
+ "today_et": "2026-11-01",
  "watchlist": {
   "AAPL": "Mag 7",
   "MSFT": "Mag 7",
@@ -31,7 +31,7 @@
    "ok": true,
    "error": "",
    "count": 1236,
-   "updated": "2026-11-01T09:57:15+08:00"
+   "updated": "2026-11-02T10:10:15+08:00"
   },
   {
    "id": "fomc",
@@ -39,7 +39,7 @@
    "ok": true,
    "error": "",
    "count": 57,
-   "updated": "2026-11-01T09:57:15+08:00"
+   "updated": "2026-11-02T10:10:15+08:00"
   },
   {
    "id": "bea",
@@ -47,15 +47,15 @@
    "ok": true,
    "error": "",
    "count": 6,
-   "updated": "2026-11-01T09:57:15+08:00"
+   "updated": "2026-11-02T10:10:15+08:00"
   },
   {
    "id": "week",
    "name": "ForexFactory 本周事件",
    "ok": true,
    "error": "",
-   "count": 33,
-   "updated": "2026-11-01T09:57:15+08:00"
+   "count": 34,
+   "updated": "2026-11-02T10:10:15+08:00"
   }
  ],
  "earnings": [
@@ -10447,7 +10447,7 @@
    "mcap": 22832531500.0,
    "eps_fc": "",
    "eps_ly": "$2.43",
-   "ests": "7",
+   "ests": "4",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -10471,7 +10471,7 @@
    "mcap": 19659999200.0,
    "eps_fc": "$0.13",
    "eps_ly": "N/A",
-   "ests": "7",
+   "ests": "4",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -10819,7 +10819,7 @@
    "mcap": 8849493000.0,
    "eps_fc": "$0.24",
    "eps_ly": "N/A",
-   "ests": "7",
+   "ests": "4",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -11143,7 +11143,7 @@
    "mcap": 2834601730.0,
    "eps_fc": "$0.09",
    "eps_ly": "N/A",
-   "ests": "7",
+   "ests": "4",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -11551,7 +11551,7 @@
    "mcap": 1139118720.0,
    "eps_fc": "",
    "eps_ly": "$0.21",
-   "ests": "7",
+   "ests": "4",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -11575,7 +11575,7 @@
    "mcap": 1129494660.0,
    "eps_fc": "($0.58)",
    "eps_ly": "N/A",
-   "ests": "7",
+   "ests": "4",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -11587,7 +11587,7 @@
    "mcap": 1083040900.0,
    "eps_fc": "",
    "eps_ly": "$0.74",
-   "ests": "7",
+   "ests": "4",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -18391,7 +18391,7 @@
    "mcap": 12322307100.0,
    "eps_fc": "$0.30",
    "eps_ly": "N/A",
-   "ests": "3",
+   "ests": "2",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -18583,7 +18583,7 @@
    "mcap": 9961584600.0,
    "eps_fc": "($0.99)",
    "eps_ly": "N/A",
-   "ests": "3",
+   "ests": "2",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -18763,7 +18763,7 @@
    "mcap": 7310858800.0,
    "eps_fc": "",
    "eps_ly": "$1.67",
-   "ests": "3",
+   "ests": "2",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -18967,7 +18967,7 @@
    "mcap": 5946985500.0,
    "eps_fc": "$1.25",
    "eps_ly": "($0.28)",
-   "ests": "3",
+   "ests": "2",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -19207,7 +19207,7 @@
    "mcap": 4725851600.0,
    "eps_fc": "$0.20",
    "eps_ly": "N/A",
-   "ests": "3",
+   "ests": "2",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -19651,7 +19651,7 @@
    "mcap": 3419954180.0,
    "eps_fc": "$2.10",
    "eps_ly": "N/A",
-   "ests": "3",
+   "ests": "2",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -19939,7 +19939,7 @@
    "mcap": 2735517950.0,
    "eps_fc": "",
    "eps_ly": "$1.34",
-   "ests": "3",
+   "ests": "2",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -19999,7 +19999,7 @@
    "mcap": 2588564740.0,
    "eps_fc": "$0.39",
    "eps_ly": "N/A",
-   "ests": "3",
+   "ests": "2",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -20119,7 +20119,7 @@
    "mcap": 2339356930.0,
    "eps_fc": "",
    "eps_ly": "$1.31",
-   "ests": "3",
+   "ests": "2",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -20311,7 +20311,7 @@
    "mcap": 2147188610.0,
    "eps_fc": "$0.28",
    "eps_ly": "N/A",
-   "ests": "3",
+   "ests": "2",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -20383,7 +20383,7 @@
    "mcap": 2041192190.0,
    "eps_fc": "$0.09",
    "eps_ly": "N/A",
-   "ests": "3",
+   "ests": "2",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -20419,7 +20419,7 @@
    "mcap": 2024117890.0,
    "eps_fc": "($0.50)",
    "eps_ly": "N/A",
-   "ests": "3",
+   "ests": "2",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -20623,7 +20623,7 @@
    "mcap": 1786188540.0,
    "eps_fc": "",
    "eps_ly": "($0.05)",
-   "ests": "3",
+   "ests": "2",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -20659,7 +20659,7 @@
    "mcap": 1737680260.0,
    "eps_fc": "",
    "eps_ly": "N/A",
-   "ests": "3",
+   "ests": "2",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -20767,7 +20767,7 @@
    "mcap": 1638072700.0,
    "eps_fc": "",
    "eps_ly": "$6.37",
-   "ests": "3",
+   "ests": "2",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -20815,7 +20815,7 @@
    "mcap": 1595156100.0,
    "eps_fc": "$0.19",
    "eps_ly": "$0.15",
-   "ests": "3",
+   "ests": "2",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -20851,7 +20851,7 @@
    "mcap": 1570654340.0,
    "eps_fc": "",
    "eps_ly": "$1.55",
-   "ests": "3",
+   "ests": "2",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -20899,7 +20899,7 @@
    "mcap": 1494342400.0,
    "eps_fc": "",
    "eps_ly": "$0.23",
-   "ests": "3",
+   "ests": "2",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -20959,7 +20959,7 @@
    "mcap": 1459026820.0,
    "eps_fc": "",
    "eps_ly": "$0.33",
-   "ests": "3",
+   "ests": "2",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -21223,7 +21223,7 @@
    "mcap": 1195943810.0,
    "eps_fc": "",
    "eps_ly": "($0.10)",
-   "ests": "3",
+   "ests": "2",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -21235,7 +21235,7 @@
    "mcap": 1191446660.0,
    "eps_fc": "",
    "eps_ly": "$1.22",
-   "ests": "3",
+   "ests": "2",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -21295,7 +21295,7 @@
    "mcap": 1145760000.0,
    "eps_fc": "",
    "eps_ly": "$1.24",
-   "ests": "3",
+   "ests": "2",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -21355,7 +21355,7 @@
    "mcap": 1115906430.0,
    "eps_fc": "",
    "eps_ly": "$1.20",
-   "ests": "3",
+   "ests": "2",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -21379,7 +21379,7 @@
    "mcap": 1087393790.0,
    "eps_fc": "($0.66)",
    "eps_ly": "N/A",
-   "ests": "3",
+   "ests": "2",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -24175,7 +24175,7 @@
    "mcap": 32487741400.0,
    "eps_fc": "$0.26",
    "eps_ly": "N/A",
-   "ests": "8",
+   "ests": "1",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -24187,7 +24187,7 @@
    "mcap": 27357874200.0,
    "eps_fc": "($0.13)",
    "eps_ly": "N/A",
-   "ests": "8",
+   "ests": "1",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -24199,7 +24199,7 @@
    "mcap": 13354258400.0,
    "eps_fc": "",
    "eps_ly": "$0.06",
-   "ests": "8",
+   "ests": "1",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -24235,7 +24235,7 @@
    "mcap": 8630558700.0,
    "eps_fc": "$0.18",
    "eps_ly": "N/A",
-   "ests": "8",
+   "ests": "1",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -24271,7 +24271,7 @@
    "mcap": 7392085000.0,
    "eps_fc": "$0.90",
    "eps_ly": "N/A",
-   "ests": "8",
+   "ests": "1",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -24307,7 +24307,7 @@
    "mcap": 5835837400.0,
    "eps_fc": "",
    "eps_ly": "N/A",
-   "ests": "8",
+   "ests": "1",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -24319,7 +24319,7 @@
    "mcap": 5578019300.0,
    "eps_fc": "$0.38",
    "eps_ly": "N/A",
-   "ests": "8",
+   "ests": "1",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -24379,7 +24379,7 @@
    "mcap": 5107896800.0,
    "eps_fc": "",
    "eps_ly": "N/A",
-   "ests": "8",
+   "ests": "1",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -24391,7 +24391,7 @@
    "mcap": 4911925800.0,
    "eps_fc": "$0.62",
    "eps_ly": "N/A",
-   "ests": "8",
+   "ests": "1",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -24403,7 +24403,7 @@
    "mcap": 4754483700.0,
    "eps_fc": "($0.21)",
    "eps_ly": "N/A",
-   "ests": "8",
+   "ests": "1",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -24415,7 +24415,7 @@
    "mcap": 4528362500.0,
    "eps_fc": "$0.50",
    "eps_ly": "N/A",
-   "ests": "8",
+   "ests": "1",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -24427,7 +24427,7 @@
    "mcap": 4375721500.0,
    "eps_fc": "$0.26",
    "eps_ly": "N/A",
-   "ests": "8",
+   "ests": "1",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -24475,7 +24475,7 @@
    "mcap": 3500023300.0,
    "eps_fc": "($0.40)",
    "eps_ly": "N/A",
-   "ests": "8",
+   "ests": "1",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -24523,7 +24523,7 @@
    "mcap": 2707611140.0,
    "eps_fc": "$0.17",
    "eps_ly": "N/A",
-   "ests": "8",
+   "ests": "1",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -24583,7 +24583,7 @@
    "mcap": 1968018690.0,
    "eps_fc": "($0.01)",
    "eps_ly": "N/A",
-   "ests": "8",
+   "ests": "1",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -24679,7 +24679,7 @@
    "mcap": 1539424000.0,
    "eps_fc": "$0.30",
    "eps_ly": "N/A",
-   "ests": "8",
+   "ests": "1",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -24691,7 +24691,7 @@
    "mcap": 1512921470.0,
    "eps_fc": "",
    "eps_ly": "$0.15",
-   "ests": "8",
+   "ests": "1",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -24715,7 +24715,7 @@
    "mcap": 1392090500.0,
    "eps_fc": "($0.03)",
    "eps_ly": "N/A",
-   "ests": "8",
+   "ests": "1",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -24739,7 +24739,7 @@
    "mcap": 1343081340.0,
    "eps_fc": "$0.46",
    "eps_ly": "N/A",
-   "ests": "8",
+   "ests": "1",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -24823,7 +24823,7 @@
    "mcap": 1177237630.0,
    "eps_fc": "$0.06",
    "eps_ly": "N/A",
-   "ests": "8",
+   "ests": "1",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -24859,7 +24859,7 @@
    "mcap": 1062310140.0,
    "eps_fc": "",
    "eps_ly": "($0.94)",
-   "ests": "8",
+   "ests": "1",
    "fq": "Sep/2026",
    "watch": ""
   },
@@ -25692,6 +25692,162 @@
    "url": "https://www.forexfactory.com/calendar"
   },
   {
+   "kind": "week",
+   "country": "USD",
+   "impact": "Medium",
+   "title": "ISM 制造业 PMI",
+   "title_en": "ISM Manufacturing PMI",
+   "time": "2026-11-02T23:00+08:00",
+   "date": "2026-11-02",
+   "forecast": "54.5",
+   "previous": "54.5",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "AUD",
+   "impact": "High",
+   "title": "Cash Rate",
+   "title_en": "Cash Rate",
+   "time": "2026-11-03T11:30+08:00",
+   "date": "2026-11-02",
+   "forecast": "4.85%",
+   "previous": "4.60%",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "AUD",
+   "impact": "High",
+   "title": "RBA Monetary Policy Statement",
+   "title_en": "RBA Monetary Policy Statement",
+   "time": "2026-11-03T11:30+08:00",
+   "date": "2026-11-02",
+   "forecast": "",
+   "previous": "",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "AUD",
+   "impact": "High",
+   "title": "RBA Rate Statement",
+   "title_en": "RBA Rate Statement",
+   "time": "2026-11-03T11:30+08:00",
+   "date": "2026-11-02",
+   "forecast": "",
+   "previous": "",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "AUD",
+   "impact": "High",
+   "title": "RBA Press Conference",
+   "title_en": "RBA Press Conference",
+   "time": "2026-11-03T12:30+08:00",
+   "date": "2026-11-02",
+   "forecast": "",
+   "previous": "",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "CHF",
+   "impact": "Medium",
+   "title": "CPI m/m",
+   "title_en": "CPI m/m",
+   "time": "2026-11-03T15:30+08:00",
+   "date": "2026-11-03",
+   "forecast": "0.0%",
+   "previous": "0.0%",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "USD",
+   "impact": "Medium",
+   "title": "JOLTS 职位空缺",
+   "title_en": "JOLTS Job Openings",
+   "time": "2026-11-03T23:00+08:00",
+   "date": "2026-11-03",
+   "forecast": "7.11M",
+   "previous": "7.08M",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "USD",
+   "impact": "High",
+   "title": "Congressional Elections",
+   "title_en": "Congressional Elections",
+   "time": "2026-11-03T23:16+08:00",
+   "date": "2026-11-03",
+   "forecast": "",
+   "previous": "",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "CAD",
+   "impact": "Medium",
+   "title": "BOC Gov Macklem Speaks",
+   "title_en": "BOC Gov Macklem Speaks",
+   "time": "2026-11-04T00:00+08:00",
+   "date": "2026-11-03",
+   "forecast": "",
+   "previous": "",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "NZD",
+   "impact": "High",
+   "title": "Employment Change q/q",
+   "title_en": "Employment Change q/q",
+   "time": "2026-11-04T05:45+08:00",
+   "date": "2026-11-03",
+   "forecast": "0.4%",
+   "previous": "0.5%",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "NZD",
+   "impact": "High",
+   "title": "Unemployment Rate",
+   "title_en": "Unemployment Rate",
+   "time": "2026-11-04T05:45+08:00",
+   "date": "2026-11-03",
+   "forecast": "5.5%",
+   "previous": "5.6%",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "EUR",
+   "impact": "Medium",
+   "title": "Core CPI Flash Estimate y/y",
+   "title_en": "Core CPI Flash Estimate y/y",
+   "time": "2026-11-04T18:00+08:00",
+   "date": "2026-11-04",
+   "forecast": "2.5%",
+   "previous": "2.5%",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "EUR",
+   "impact": "Medium",
+   "title": "CPI Flash Estimate y/y",
+   "title_en": "CPI Flash Estimate y/y",
+   "time": "2026-11-04T18:00+08:00",
+   "date": "2026-11-04",
+   "forecast": "4.0%",
+   "previous": "3.8%",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
    "kind": "bea",
    "country": "USD",
    "impact": "Medium",
@@ -25700,6 +25856,246 @@
    "time": "2026-11-04T21:30+08:00",
    "date": "2026-11-04",
    "url": "https://www.bea.gov/news/schedule"
+  },
+  {
+   "kind": "week",
+   "country": "USD",
+   "impact": "Medium",
+   "title": "ISM 服务业 PMI",
+   "title_en": "ISM Services PMI",
+   "time": "2026-11-04T23:00+08:00",
+   "date": "2026-11-04",
+   "forecast": "54.9",
+   "previous": "54.9",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "GBP",
+   "impact": "High",
+   "title": "BOE Monetary Policy Report",
+   "title_en": "BOE Monetary Policy Report",
+   "time": "2026-11-05T20:00+08:00",
+   "date": "2026-11-05",
+   "forecast": "",
+   "previous": "",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "GBP",
+   "impact": "High",
+   "title": "Monetary Policy Summary",
+   "title_en": "Monetary Policy Summary",
+   "time": "2026-11-05T20:00+08:00",
+   "date": "2026-11-05",
+   "forecast": "",
+   "previous": "",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "GBP",
+   "impact": "High",
+   "title": "MPC Official Bank Rate Votes",
+   "title_en": "MPC Official Bank Rate Votes",
+   "time": "2026-11-05T20:00+08:00",
+   "date": "2026-11-05",
+   "forecast": "7-0-2",
+   "previous": "3-0-6",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "GBP",
+   "impact": "High",
+   "title": "Official Bank Rate",
+   "title_en": "Official Bank Rate",
+   "time": "2026-11-05T20:00+08:00",
+   "date": "2026-11-05",
+   "forecast": "4.00%",
+   "previous": "3.75%",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "GBP",
+   "impact": "High",
+   "title": "BOE Gov Bailey Speaks",
+   "title_en": "BOE Gov Bailey Speaks",
+   "time": "2026-11-05T20:30+08:00",
+   "date": "2026-11-05",
+   "forecast": "",
+   "previous": "",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "CHF",
+   "impact": "Medium",
+   "title": "SNB Chairman Schlegel Speaks",
+   "title_en": "SNB Chairman Schlegel Speaks",
+   "time": "2026-11-05T20:40+08:00",
+   "date": "2026-11-05",
+   "forecast": "",
+   "previous": "",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "USD",
+   "impact": "Medium",
+   "title": "初请失业金人数",
+   "title_en": "Unemployment Claims",
+   "time": "2026-11-05T21:30+08:00",
+   "date": "2026-11-05",
+   "forecast": "197K",
+   "previous": "194K",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "CAD",
+   "impact": "Medium",
+   "title": "BOC Gov Macklem Speaks",
+   "title_en": "BOC Gov Macklem Speaks",
+   "time": "2026-11-05T23:30+08:00",
+   "date": "2026-11-05",
+   "forecast": "",
+   "previous": "",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "EUR",
+   "impact": "Medium",
+   "title": "ECB President Lagarde Speaks",
+   "title_en": "ECB President Lagarde Speaks",
+   "time": "2026-11-06T02:00+08:00",
+   "date": "2026-11-05",
+   "forecast": "",
+   "previous": "",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "CAD",
+   "impact": "Medium",
+   "title": "Annual Budget Release",
+   "title_en": "Annual Budget Release",
+   "time": "2026-11-06T05:00+08:00",
+   "date": "2026-11-05",
+   "forecast": "",
+   "previous": "",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "CAD",
+   "impact": "High",
+   "title": "Employment Change",
+   "title_en": "Employment Change",
+   "time": "2026-11-06T21:30+08:00",
+   "date": "2026-11-06",
+   "forecast": "14.5K",
+   "previous": "-68.3K",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "USD",
+   "impact": "High",
+   "title": "失业率",
+   "title_en": "Unemployment Rate",
+   "time": "2026-11-06T21:30+08:00",
+   "date": "2026-11-06",
+   "forecast": "4.2%",
+   "previous": "4.2%",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "USD",
+   "impact": "High",
+   "title": "平均时薪月率",
+   "title_en": "Average Hourly Earnings m/m",
+   "time": "2026-11-06T21:30+08:00",
+   "date": "2026-11-06",
+   "forecast": "0.3%",
+   "previous": "0.1%",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "USD",
+   "impact": "High",
+   "title": "非农就业人数",
+   "title_en": "Non-Farm Employment Change",
+   "time": "2026-11-06T21:30+08:00",
+   "date": "2026-11-06",
+   "forecast": "63K",
+   "previous": "29K",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "CAD",
+   "impact": "Medium",
+   "title": "Ivey PMI",
+   "title_en": "Ivey PMI",
+   "time": "2026-11-06T23:00+08:00",
+   "date": "2026-11-06",
+   "forecast": "57.7",
+   "previous": "58.2",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "USD",
+   "impact": "Medium",
+   "title": "密歇根消费者信心初值",
+   "title_en": "Prelim UoM Consumer Sentiment",
+   "time": "2026-11-06T23:00+08:00",
+   "date": "2026-11-06",
+   "forecast": "47.8",
+   "previous": "46.3",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "USD",
+   "impact": "Medium",
+   "title": "密歇根通胀预期初值",
+   "title_en": "Prelim UoM Inflation Expectations",
+   "time": "2026-11-06T23:00+08:00",
+   "date": "2026-11-06",
+   "forecast": "",
+   "previous": "4.7%",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "JPY",
+   "impact": "High",
+   "title": "BOJ Gov Ueda Speaks",
+   "title_en": "BOJ Gov Ueda Speaks",
+   "time": "2026-11-07T00:00+08:00",
+   "date": "2026-11-06",
+   "forecast": "",
+   "previous": "",
+   "url": "https://www.forexfactory.com/calendar"
+  },
+  {
+   "kind": "week",
+   "country": "NZD",
+   "impact": "High",
+   "title": "Parliamentary Elections",
+   "title_en": "Parliamentary Elections",
+   "time": "2026-11-07T05:45+08:00",
+   "date": "2026-11-06",
+   "forecast": "",
+   "previous": "",
+   "url": "https://www.forexfactory.com/calendar"
   },
   {
    "kind": "bea",
